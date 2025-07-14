@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://imodules.com/WebServices/ControlQuery/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://imodules.com/WebServices/ControlQuery/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://imodules.com/WebServices/ControlQuery/">
+      <s:element name="GetAllColumns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllColumnsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllColumnsResult" type="tns:ArrayOfAllColumnResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAllColumnResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AllColumnResults" type="tns:AllColumnResults" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AllColumnResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ArrayOfOption" />
+        </s:sequence>
+        <s:attribute name="Column" type="s:string" />
+        <s:attribute name="Column_Info" type="s:string" />
+        <s:attribute name="Instance" type="s:boolean" use="required" />
+        <s:attribute name="Reusable" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Option" nillable="true" type="tns:Option" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Option">
+        <s:attribute name="ID" type="s:int" use="required" />
+        <s:attribute name="Text" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:complexType name="Error">
+        <s:attribute name="Code" type="s:int" use="required" />
+        <s:attribute name="Description" type="s:string" />
+      </s:complexType>
+      <s:element name="GetAllControls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllControlsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllControlsResult" type="tns:ArrayOfAllControlResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAllControlResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AllControlResults" type="tns:AllControlResults" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AllControlResults">
+        <s:attribute name="Control_Id" type="s:int" use="required" />
+        <s:attribute name="Control_Name" type="s:string" />
+        <s:attribute name="Control_Type" type="s:string" />
+        <s:attribute name="Group_Id" type="s:int" use="required" />
+      </s:complexType>
+      <s:element name="GetSelectedControls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="controlType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSelectedControlsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSelectedControlsResult" type="tns:ArrayOfAllControlResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetControlSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetControlSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetControlSettingsResult" type="tns:ArrayOfControlSettingsResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfControlSettingsResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ControlSettingsResults" type="tns:ControlSettingsResults" />
+          <s:element minOccurs="0" maxOccurs="1" name="LedgerValues" type="tns:ArrayOfLedgerValue" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ControlSettingsResults">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Name" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLedgerValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LedgerValue" nillable="true" type="tns:LedgerValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LedgerValue">
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:element name="GetOneMember">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columns" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="constituentId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactions" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactionDetails" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOneMemberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOneMemberResult" type="tns:ArrayOfMemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMemberInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberInformation" type="tns:MemberInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Guests" type="tns:ArrayOfGuest" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuestOf" type="tns:Guest" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" type="tns:Column" />
+          <s:element minOccurs="0" maxOccurs="1" name="Instances" type="tns:ArrayOfInstance" />
+        </s:sequence>
+        <s:attribute name="Imod_Member_Id" type="s:int" use="required" />
+        <s:attribute name="Constituent_Id" type="s:string" />
+        <s:attribute name="Last_Updated" type="s:dateTime" />
+        <s:attribute name="Last_Updated_By_Constituent_Id" type="s:string" />
+        <s:attribute name="Last_Updated_By_Name" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfGuest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Guest" nillable="true" type="tns:Guest" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Guest">
+        <s:attribute name="IMod_Member_Id" type="s:int" use="required" />
+      </s:complexType>
+      <s:complexType name="Column">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Designations" type="tns:ArrayOfDesignation" />
+        </s:sequence>
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfDesignation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Designation" nillable="true" type="tns:Designation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Designation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ids" type="tns:ArrayOfID" />
+        </s:sequence>
+        <s:attribute name="ID" type="s:int" use="required" />
+        <s:attribute name="Amount" type="s:decimal" use="required" />
+        <s:attribute name="Text" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+        <s:attribute name="DesignationInstructions" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfID">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Id" nillable="true" type="tns:Id" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Id">
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Value" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfInstance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Instance" nillable="true" type="tns:Instance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Instance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" type="tns:Column" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transactions" type="tns:ArrayOfTransaction" />
+        </s:sequence>
+        <s:attribute name="Instance_Id" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTransaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Transaction" nillable="true" type="tns:Transaction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Transaction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" type="tns:Column" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionItems" type="tns:ArrayOfTransactionItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="LinkedTransaction" type="tns:LinkedTransaction" />
+          <s:element minOccurs="0" maxOccurs="1" name="LedgerValues" type="tns:ArrayOfLedgerValue" />
+        </s:sequence>
+        <s:attribute name="Transaction_Id" type="s:int" use="required" />
+        <s:attribute name="IsSuccess" type="s:boolean" use="required" />
+        <s:attribute name="IsReviewed" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="ArrayOfTransactionItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransactionItem" nillable="true" type="tns:TransactionItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransactionItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Column" type="tns:Column" />
+        </s:sequence>
+        <s:attribute name="Imod_Member_Id" type="s:int" use="required" />
+        <s:attribute name="Type" type="s:string" />
+        <s:attribute name="Transaction_Item_Id" type="s:string" />
+      </s:complexType>
+      <s:complexType name="LinkedTransaction">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ControlId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ControlType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ControlName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaymentType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalScheduledAmount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOneMemberByMemberId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columns" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="memberId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactions" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactionDetails" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOneMemberByMemberIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOneMemberByMemberIdResult" type="tns:ArrayOfMemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMembersChangedDuring">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columns" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="changedColumns" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="changedFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="changedTo" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeNonMembers" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeBlankIds" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactions" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactionDetails" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeUnreviewed" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMembersChangedDuringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMembersChangedDuringResult" type="tns:ArrayOfMemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMembersChangedSince">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columns" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="changedColumns" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="changedSince" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeNonMembers" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeBlankIds" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactions" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeTransactionDetails" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="includeUnreviewed" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMembersChangedSinceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMembersChangedSinceResult" type="tns:ArrayOfMemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="allowAddingConstituents" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="unbounded" name="MemberInformation" type="tns:MemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateResult" type="tns:UpdateResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateResults">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateMemberResult" type="tns:UpdateMemberResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpdateMemberResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateColumnResult" type="tns:UpdateColumnResult" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateInstanceResult" type="tns:UpdateInstanceResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:Message" />
+        </s:sequence>
+        <s:attribute name="Imod_Member_Id" type="s:int" use="required" />
+        <s:attribute name="Constituent_Id" type="s:string" />
+        <s:attribute name="Is_New" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="UpdateColumnResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:Message" />
+        </s:sequence>
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Success" type="s:boolean" use="required" />
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:attribute name="Code" type="s:int" use="required" />
+        <s:attribute name="Description" type="s:string" />
+      </s:complexType>
+      <s:complexType name="UpdateInstanceResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UpdateColumnResult" type="tns:UpdateColumnResult" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="tns:Error" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="tns:Message" />
+        </s:sequence>
+        <s:attribute name="Instance_Id" type="s:string" />
+        <s:attribute name="External_Id_Name" type="s:string" />
+        <s:attribute name="External_Id_Value" type="s:string" />
+      </s:complexType>
+      <s:element name="UpdateKeepChanged">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="controlId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="allowAddingConstituents" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="keepChangedFrom" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="keepChangedTo" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="unbounded" name="MemberInformation" type="tns:MemberInformation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateKeepChangedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateKeepChangedResult" type="tns:UpdateResults" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfAllColumnResults" nillable="true" type="tns:ArrayOfAllColumnResults" />
+      <s:element name="ArrayOfAllControlResults" nillable="true" type="tns:ArrayOfAllControlResults" />
+      <s:element name="ArrayOfControlSettingsResults" nillable="true" type="tns:ArrayOfControlSettingsResults" />
+      <s:element name="ArrayOfMemberInformation" nillable="true" type="tns:ArrayOfMemberInformation" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllColumnsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllColumns" />
+  </wsdl:message>
+  <wsdl:message name="GetAllColumnsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllColumnsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllControls" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllControlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSelectedControls" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSelectedControlsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetControlSettings" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetControlSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOneMember" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOneMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOneMemberByMemberId" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOneMemberByMemberIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMembersChangedDuring" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMembersChangedDuringResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMembersChangedSince" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMembersChangedSinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateKeepChangedSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateKeepChanged" />
+  </wsdl:message>
+  <wsdl:message name="UpdateKeepChangedSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateKeepChangedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllColumnsHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllColumnsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllColumnResults" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllControlResults" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllControlResults" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfControlSettingsResults" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="constituentId" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="memberId" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="changedColumns" type="s:string" />
+    <wsdl:part name="changedFrom" type="s:string" />
+    <wsdl:part name="changedTo" type="s:string" />
+    <wsdl:part name="includeNonMembers" type="s:string" />
+    <wsdl:part name="includeBlankIds" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+    <wsdl:part name="includeUnreviewed" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceHttpGetIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="changedColumns" type="s:string" />
+    <wsdl:part name="changedSince" type="s:string" />
+    <wsdl:part name="includeNonMembers" type="s:string" />
+    <wsdl:part name="includeBlankIds" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+    <wsdl:part name="includeUnreviewed" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetAllColumnsHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllColumnsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllColumnResults" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllControlsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllControlResults" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSelectedControlsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAllControlResults" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetControlSettingsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfControlSettingsResults" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="constituentId" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="memberId" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetOneMemberByMemberIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="changedColumns" type="s:string" />
+    <wsdl:part name="changedFrom" type="s:string" />
+    <wsdl:part name="changedTo" type="s:string" />
+    <wsdl:part name="includeNonMembers" type="s:string" />
+    <wsdl:part name="includeBlankIds" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+    <wsdl:part name="includeUnreviewed" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedDuringHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceHttpPostIn">
+    <wsdl:part name="login" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="controlId" type="s:string" />
+    <wsdl:part name="columns" type="s:string" />
+    <wsdl:part name="changedColumns" type="s:string" />
+    <wsdl:part name="changedSince" type="s:string" />
+    <wsdl:part name="includeNonMembers" type="s:string" />
+    <wsdl:part name="includeBlankIds" type="s:string" />
+    <wsdl:part name="includeTransactions" type="s:string" />
+    <wsdl:part name="includeTransactionDetails" type="s:string" />
+    <wsdl:part name="includeUnreviewed" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMembersChangedSinceHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMemberInformation" />
+  </wsdl:message>
+  <wsdl:portType name="ControlQuerySoap">
+    <wsdl:operation name="GetAllColumns">
+      <wsdl:input message="tns:GetAllColumnsSoapIn" />
+      <wsdl:output message="tns:GetAllColumnsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <wsdl:input message="tns:GetAllControlsSoapIn" />
+      <wsdl:output message="tns:GetAllControlsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <wsdl:input message="tns:GetSelectedControlsSoapIn" />
+      <wsdl:output message="tns:GetSelectedControlsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <wsdl:input message="tns:GetControlSettingsSoapIn" />
+      <wsdl:output message="tns:GetControlSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <wsdl:input message="tns:GetOneMemberSoapIn" />
+      <wsdl:output message="tns:GetOneMemberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <wsdl:input message="tns:GetOneMemberByMemberIdSoapIn" />
+      <wsdl:output message="tns:GetOneMemberByMemberIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <wsdl:input message="tns:GetMembersChangedDuringSoapIn" />
+      <wsdl:output message="tns:GetMembersChangedDuringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <wsdl:input message="tns:GetMembersChangedSinceSoapIn" />
+      <wsdl:output message="tns:GetMembersChangedSinceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKeepChanged">
+      <wsdl:input message="tns:UpdateKeepChangedSoapIn" />
+      <wsdl:output message="tns:UpdateKeepChangedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ControlQueryHttpGet">
+    <wsdl:operation name="GetAllColumns">
+      <wsdl:input message="tns:GetAllColumnsHttpGetIn" />
+      <wsdl:output message="tns:GetAllColumnsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <wsdl:input message="tns:GetAllControlsHttpGetIn" />
+      <wsdl:output message="tns:GetAllControlsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <wsdl:input message="tns:GetSelectedControlsHttpGetIn" />
+      <wsdl:output message="tns:GetSelectedControlsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <wsdl:input message="tns:GetControlSettingsHttpGetIn" />
+      <wsdl:output message="tns:GetControlSettingsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <wsdl:input message="tns:GetOneMemberHttpGetIn" />
+      <wsdl:output message="tns:GetOneMemberHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <wsdl:input message="tns:GetOneMemberByMemberIdHttpGetIn" />
+      <wsdl:output message="tns:GetOneMemberByMemberIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <wsdl:input message="tns:GetMembersChangedDuringHttpGetIn" />
+      <wsdl:output message="tns:GetMembersChangedDuringHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <wsdl:input message="tns:GetMembersChangedSinceHttpGetIn" />
+      <wsdl:output message="tns:GetMembersChangedSinceHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ControlQueryHttpPost">
+    <wsdl:operation name="GetAllColumns">
+      <wsdl:input message="tns:GetAllColumnsHttpPostIn" />
+      <wsdl:output message="tns:GetAllColumnsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <wsdl:input message="tns:GetAllControlsHttpPostIn" />
+      <wsdl:output message="tns:GetAllControlsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <wsdl:input message="tns:GetSelectedControlsHttpPostIn" />
+      <wsdl:output message="tns:GetSelectedControlsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <wsdl:input message="tns:GetControlSettingsHttpPostIn" />
+      <wsdl:output message="tns:GetControlSettingsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <wsdl:input message="tns:GetOneMemberHttpPostIn" />
+      <wsdl:output message="tns:GetOneMemberHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <wsdl:input message="tns:GetOneMemberByMemberIdHttpPostIn" />
+      <wsdl:output message="tns:GetOneMemberByMemberIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <wsdl:input message="tns:GetMembersChangedDuringHttpPostIn" />
+      <wsdl:output message="tns:GetMembersChangedDuringHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <wsdl:input message="tns:GetMembersChangedSinceHttpPostIn" />
+      <wsdl:output message="tns:GetMembersChangedSinceHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControlQuerySoap" type="tns:ControlQuerySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllColumns">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetAllColumns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetAllControls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetSelectedControls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetControlSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetOneMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetOneMemberByMemberId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetMembersChangedDuring" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetMembersChangedSince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKeepChanged">
+      <soap:operation soapAction="http://imodules.com/WebServices/ControlQuery/UpdateKeepChanged" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ControlQuerySoap12" type="tns:ControlQuerySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllColumns">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetAllColumns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetAllControls" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetSelectedControls" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetControlSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetOneMember" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetOneMemberByMemberId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetMembersChangedDuring" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/GetMembersChangedSince" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKeepChanged">
+      <soap12:operation soapAction="http://imodules.com/WebServices/ControlQuery/UpdateKeepChanged" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ControlQueryHttpGet" type="tns:ControlQueryHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAllColumns">
+      <http:operation location="/GetAllColumns" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <http:operation location="/GetAllControls" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <http:operation location="/GetSelectedControls" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <http:operation location="/GetControlSettings" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <http:operation location="/GetOneMember" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <http:operation location="/GetOneMemberByMemberId" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <http:operation location="/GetMembersChangedDuring" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <http:operation location="/GetMembersChangedSince" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ControlQueryHttpPost" type="tns:ControlQueryHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAllColumns">
+      <http:operation location="/GetAllColumns" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllControls">
+      <http:operation location="/GetAllControls" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSelectedControls">
+      <http:operation location="/GetSelectedControls" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetControlSettings">
+      <http:operation location="/GetControlSettings" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMember">
+      <http:operation location="/GetOneMember" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneMemberByMemberId">
+      <http:operation location="/GetOneMemberByMemberId" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedDuring">
+      <http:operation location="/GetMembersChangedDuring" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMembersChangedSince">
+      <http:operation location="/GetMembersChangedSince" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControlQuery">
+    <wsdl:port name="ControlQuerySoap" binding="tns:ControlQuerySoap">
+      <soap:address location="https://api.imodules.com/ws/21/ControlQuery.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ControlQuerySoap12" binding="tns:ControlQuerySoap12">
+      <soap12:address location="https://api.imodules.com/ws/21/ControlQuery.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ControlQueryHttpGet" binding="tns:ControlQueryHttpGet">
+      <http:address location="https://api.imodules.com/ws/21/ControlQuery.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ControlQueryHttpPost" binding="tns:ControlQueryHttpPost">
+      <http:address location="https://api.imodules.com/ws/21/ControlQuery.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

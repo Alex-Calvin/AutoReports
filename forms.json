@@ -1,0 +1,20 @@
+[
+  {
+    "id": "10001",
+    "name": "Annual Fundraiser Event Registration",
+    "to": "events@example-org.org",
+    "from": "noreply@example-org.org",
+    "cc": "admin@example-org.org",
+    "bcc": "reports@example-org.org",
+    "frequency": "D"
+  },
+  {
+    "id": "10002", 
+    "name": "Membership Renewal Campaign",
+    "to": "membership@example-org.org",
+    "from": "noreply@example-org.org",
+    "cc": "admin@example-org.org",
+    "bcc": "",
+    "frequency": "W"
+  }
+]
