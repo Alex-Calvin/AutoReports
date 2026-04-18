@@ -21,8 +21,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.100" />
-    <PackageReference Include="MailKit" Version="4.15.1" />
-    <PackageReference Include="MimeKit" Version="4.15.1" />
+    <PackageReference Include="MailKit" Version="4.16.0" />
+    <PackageReference Include="MimeKit" Version="4.16.0" />
   </ItemGroup>
 
   <ItemGroup>
